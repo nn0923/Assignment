@@ -55,11 +55,22 @@
 
 
     <script>
-      const todolist = []
+      let todolist = []
+
+      const listFromlocalStorage = localStorage.getItem("todolist");
+     if (listFromlocalStorage){
+        todolist = JSON.parse(listFromlocalStorage);
+        renderToDoList();
+     }
 
       function add(){
          const inputElement = document.getElementById('input-todo')
           todolist.push(inputElement.value)
+
+          localStorage.setItem("todolist", JSON.stringify(todolist));
+
+          inputElement.value = ""
+
             inputElement.value = ""
            renderToDoList()
       }
