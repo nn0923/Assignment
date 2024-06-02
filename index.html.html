@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .action-cont{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .list-cont{
+            background-color: #ffd9b3;
+            width: 300px;
+            height: 200px;
+            overflow-y: scroll;
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .todo-item{
+            background-color: #c2076e;
+            padding: 5px 20px;
+            border-radius: 30px;
+            color: #fff;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="list-cont" id="list-cont"> 
+  <div class="todo-item">  Task 1</div>
+  <div class="todo-item">  Task 2</div>
+  <div class="todo-item">  Task 3</div>
+  <div class="todo-item">  Task 4</div>
+  <div class="todo-item">  Task 5</div>
+  <div class="todo-item">  Task 6</div>
+  <div class="todo-item">  Task 7</div>
+  <div class="todo-item">  Task 8</div>
+  <div class="todo-item">  Task 9</div>
+  <div class="todo-item">  Task 10</div>
+  
+</div>
+
+<div class="action-cont">
+    <input type="text" id="input-todo">
+<button onclick="add()">
+     Add 
+    </button>
+    
+
+</div>
+
+
+    <script>
+      const todolist = []
+
+      function add(){
+         const inputElement = document.getElementById('input-todo')
+          todolist.push(inputElement.value)
+            inputElement.value = ""
+           renderToDoList()
+      }
+      
+     function renderToDoList(){
+        const  listcont = document.getElementById('list-cont')
+        listcont.innerHTML = ""
+
+        for(const todoItem of todolist)
+        {
+            listcont.innerHTML += `<div class="todo-item"> 
+                <input type="checkbox">
+                ${todoItem}
+                </div>`;
+           
+        }
+     }
+
+    </script>
+</body>
+</html>
